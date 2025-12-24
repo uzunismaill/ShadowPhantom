@@ -19224,29 +19224,7 @@ function print_custom_banner() {
 	echo
 }
 
-function play_custom_video() {
-	local video_file="koyulacak.mp4"
-	
-	if [ -f "${video_file}" ]; then
-		echo -e "${yellow_color}Video intro başlatılıyor...${normal_color}"
-		sleep 1
-		
-		if command -v mpv &> /dev/null; then
-			# Try True Color Terminal first
-			mpv --vo=tct "${video_file}" --really-quiet
-		elif command -v mplayer &> /dev/null; then
-			# Fallback to CACA (Color ASCII) or AA (ASCII Art)
-			if mplayer -vo help | grep -q "caca"; then
-				mplayer -vo caca -quiet "${video_file}"
-			else
-				mplayer -vo aa -quiet "${video_file}"
-			fi
-		else
-			echo -e "${red_color}Video oynatıcı (mpv veya mplayer) bulunamadı. Video atlanıyor.${normal_color}"
-			sleep 2
-		fi
-	fi
-}
+
 
 #ShadowPhantom Intro Function
 function print_shadowphantom_intro() {
