@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShadowPhantom Access</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Video Container -->
+    <div id="video-container">
+        <video id="intro-video" autoplay muted playsinline>
+            <source src="koyulacak.mp4" type="video/mp4">
+            Tarayıcınız video etiketini desteklemiyor.
+        </video>
+        <button id="skip-btn">SKIP_INTRO >></button>
+    </div>
+
+    <!-- Main Interface (Hidden initially) -->
+    <div id="main-interface" class="hidden">
+        <div class="overlay"></div>
+        <div class="scan-line"></div>
+        
+        <header>
+            <div class="logo">SHADOW<span class="highlight">PHANTOM</span></div>
+            <div class="status">
+                <span id="clock">00:00:00</span>
+                <span class="status-item">SYSTEM: <span class="online">ONLINE</span></span>
+            </div>
+        </header>
+
+        <main>
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="title">root@shadowphantom:~</span>
+                </div>
+                <div class="terminal-content" id="terminal-text">
+                    <!-- Text will be typed here via JS -->
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="card" id="card-1">
+                    <h3>AĞ DURUMU</h3>
+                    <div class="radar">
+                        <div class="sweep"></div>
+                    </div>
+                </div>
+                <div class="card" id="card-2">
+                    <h3>HEDEF ANALİZİ</h3>
+                    <div class="bars">
+                        <div class="bar" style="height: 40%"></div>
+                        <div class="bar" style="height: 70%"></div>
+                        <div class="bar" style="height: 50%"></div>
+                        <div class="bar" style="height: 90%"></div>
+                        <div class="bar" style="height: 30%"></div>
+                    </div>
+                </div>
+                <!-- Additional professional filler content can go here -->
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

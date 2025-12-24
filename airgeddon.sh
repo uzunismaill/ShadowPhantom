@@ -19248,6 +19248,71 @@ function play_custom_video() {
 	fi
 }
 
+#ShadowPhantom Intro Function
+function print_shadowphantom_intro() {
+	clear
+	
+	# ANSI Colors
+	local C_GREEN="\033[92m"
+	local C_WHITE="\033[97m"
+	local C_RED="\033[91m"
+	local C_RESET="\033[0m"
+	local C_BOLD="\033[1m"
+	
+	# Logo
+	echo -e "${C_GREEN}${C_BOLD}"
+	echo "   _____ _    _          _____  ________          __"
+	echo "  / ____| |  | |   /\   |  __ \|  ____\ \        / /"
+	echo " | (___ | |__| |  /  \  | |  | | |__   \ \  /\  / / "
+	echo "  \___ \|  __  | / /\ \ | |  | |  __|   \ \/  \/ /  "
+	echo "  ____) | |  | |/ ____ \| |__| | |____   \  /\  /   "
+	echo " |_____/|_|  |_/_/    \_\_____/|______|   \/  \/    "
+	echo -e "${C_WHITE} P H A N T O M   A C C E S S   T E R M I N A L${C_RESET}"
+	echo ""
+	
+	# Boot Sequence
+	local lines=(
+		"Initializing ShadowPhantom Kernel..."
+		"Loading modules: [====================] 100%"
+		" > crypto_module... OK"
+		" > network_sniffer... OK"
+		" > brute_force_kit... OK"
+		"Establishing secure connection to server..."
+		" ..."
+		"Connection established (latency: 12ms)"
+		"User identity: SHADOW_PHANTOM"
+		"Access Level: GOD_MODE"
+		"Welcome back, Sir."
+	)
+	
+	local line
+	local delay
+	for line in "${lines[@]}"; do
+		delay=0.1
+		if [[ "${line}" == "Access Level"* ]]; then
+			 echo -e "[$(date +'%H:%M:%S')] ${C_RED}${line}${C_RESET}"
+		elif [[ "${line}" == "Welcome"* ]]; then
+			 echo -e "[$(date +'%H:%M:%S')] ${C_WHITE}${line}${C_RESET}"
+		elif [[ "${line}" == " ..." ]]; then
+			sleep 0.5
+			continue
+		else
+			# Typewriter effect
+			echo -ne "[$(date +'%H:%M:%S')] ${C_GREEN}"
+			local i
+			for (( i=0; i<${#line}; i++ )); do
+				echo -ne "${line:$i:1}"
+				sleep 0.01
+			done
+			echo -e "${C_RESET}"
+		fi
+		
+		sleep 0.1
+	done
+	
+	sleep 1
+}
+
 #Script starting point
 function main() {
 
@@ -19310,17 +19375,7 @@ function main() {
 
 	if ! "${AIRGEDDON_DEVELOPMENT_MODE:-false}"; then
 		if ! "${AIRGEDDON_SKIP_INTRO:-false}"; then
-			language_strings "${language}" 86 "title"
-			language_strings "${language}" 6 "blue"
-			echo
-			if check_window_size_for_intro; then
-				print_intro
-			else
-				language_strings "${language}" 228 "green"
-				echo
-				language_strings "${language}" 395 "yellow"
-				sleep 3
-			fi
+			print_shadowphantom_intro
 		fi
 
 		clear
